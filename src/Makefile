@@ -4,10 +4,10 @@ SRC = repeater.c parseconfig.c json.c
 OBJS = $(patsubst %.c,%.o,$(SRC))
 
 CC = gcc
-CFLAGS = -Wall -Werror -std=c99 -pedantic -I../include -lm -D_POSIX_SOURCE
+CFLAGS = -Wall -Werror -std=c99 -pedantic -I../include  -D_POSIX_SOURCE
 
 build-release: $(OBJS)
-	$(CC) $(CFLAGS) -o ../bin/$(PROGNAME) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -lm -o ../bin/$(PROGNAME)
 
 build-debug: CFLAGS += -g -DDEBUG
 build-debug: $(OBJS)
